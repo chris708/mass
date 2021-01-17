@@ -7,6 +7,7 @@ import 'package:mass/pages/role_body.dart';
 import 'package:mass/pages/role_name.dart';
 import 'package:mass/pages/event_details.dart';
 import 'package:mass/pages/sender_details.dart';
+import 'package:sqflite/sqflite.dart';
 
 void main() => runApp(MaterialApp(
     initialRoute: '/home',
