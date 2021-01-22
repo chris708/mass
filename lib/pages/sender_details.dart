@@ -40,9 +40,11 @@ class _MyThirdWidgetState extends State<MyThirdWidget> {
           children: <Widget>[
             Container(
               margin: EdgeInsets.only(top: 10.0),
-              child: Text("Enter your name:", style: TextStyle(
-                fontSize: 20.0,
-              ),
+              child: Text(
+                "Enter your name:",
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
               ),
             ),
             Container(
@@ -55,15 +57,17 @@ class _MyThirdWidgetState extends State<MyThirdWidget> {
                   if (value.isEmpty) {
                     return 'Please enter some text';
                   }
-                  return null;
+                  return value;
                 },
               ),
             ),
             Container(
               margin: EdgeInsets.only(top: 10.0),
-              child: Text("Enter your email:", style: TextStyle(
-                fontSize: 20.0,
-              ),
+              child: Text(
+                "Enter your email:",
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
               ),
             ),
             Container(
@@ -76,15 +80,17 @@ class _MyThirdWidgetState extends State<MyThirdWidget> {
                   if (value.isEmpty) {
                     return 'Please enter some text';
                   }
-                  return null;
+                  return value;
                 },
               ),
             ),
             Container(
               margin: EdgeInsets.only(top: 10.0),
-              child: Text("Enter your contact no:", style: TextStyle(
-                fontSize: 20.0,
-              ),
+              child: Text(
+                "Enter your contact no:",
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
               ),
             ),
             Container(
@@ -97,7 +103,7 @@ class _MyThirdWidgetState extends State<MyThirdWidget> {
                   if (value.isEmpty) {
                     return 'Please enter some text';
                   }
-                  return null;
+                  return value;
                 },
               ),
             ),
@@ -126,4 +132,3 @@ class _MyThirdWidgetState extends State<MyThirdWidget> {
     );
   }
 }
-
