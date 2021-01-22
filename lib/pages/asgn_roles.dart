@@ -31,7 +31,7 @@ class _HomeState extends State<Home> {
                     RaisedButton(
                       padding: EdgeInsets.all(5.0),
                       onPressed: () {
-                        Navigator.pushNamed(context, '/create_receiver');
+                        Navigator.pushNamed(context, '/create_receiver1');
                       },
                       child: Text(
                         'Create Receiver',
@@ -60,7 +60,7 @@ class _HomeState extends State<Home> {
                     RaisedButton(
                       padding: EdgeInsets.all(5.0),
                       onPressed: () {
-                        Navigator.pushNamed(context, '/create_receiver');
+                        Navigator.pushNamed(context, '/create_receiver2');
                       },
                       child: Text(
                         'Create Receiver',
@@ -89,7 +89,7 @@ class _HomeState extends State<Home> {
                     RaisedButton(
                       padding: EdgeInsets.all(5.0),
                       onPressed: () {
-                        Navigator.pushNamed(context, '/create_receiver');
+                        Navigator.pushNamed(context, '/create_receiver3');
                       },
                       child: Text(
                         'Create Receiver',
