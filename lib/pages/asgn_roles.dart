@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mass/db_keeper.dart';
+import 'classes_used.dart';
+import 'package:mass/global_vars.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -12,9 +15,7 @@ class _HomeState extends State<Home> {
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
         backgroundColor: Colors.teal,
-        title: Text(
-          'Assign Roles'
-        ),
+        title: Text('Assign Roles'),
       ),
       body: SafeArea(
         child: Column(
@@ -25,7 +26,7 @@ class _HomeState extends State<Home> {
                 margin: EdgeInsets.only(left: 20.0),
                 child: Row(
                   children: <Widget>[
-                    Text("R_Name 1:"),
+                    Text(role1.name),
                     SizedBox(width: 10.0),
                     RaisedButton(
                       padding: EdgeInsets.all(5.0),
@@ -42,9 +43,7 @@ class _HomeState extends State<Home> {
                       onPressed: () {
                         Navigator.pushNamed(context, '/select_receiver');
                       },
-                      child: Text(
-                          'Select Receiver'
-                      ),
+                      child: Text('Select Receiver'),
                     ),
                   ],
                 ),
@@ -56,7 +55,7 @@ class _HomeState extends State<Home> {
                 margin: EdgeInsets.only(left: 20.0),
                 child: Row(
                   children: <Widget>[
-                    Text("R_Name 2:"),
+                    Text(role2.name),
                     SizedBox(width: 10.0),
                     RaisedButton(
                       padding: EdgeInsets.all(5.0),
@@ -73,9 +72,7 @@ class _HomeState extends State<Home> {
                       onPressed: () {
                         Navigator.pushNamed(context, '/select_receiver');
                       },
-                      child: Text(
-                          'Select Receiver'
-                      ),
+                      child: Text('Select Receiver'),
                     ),
                   ],
                 ),
@@ -87,7 +84,7 @@ class _HomeState extends State<Home> {
                 margin: EdgeInsets.only(left: 20.0),
                 child: Row(
                   children: <Widget>[
-                    Text("R_Name 3:"),
+                    Text(role3.name),
                     SizedBox(width: 10.0),
                     RaisedButton(
                       padding: EdgeInsets.all(5.0),
@@ -104,9 +101,7 @@ class _HomeState extends State<Home> {
                       onPressed: () {
                         Navigator.pushNamed(context, '/select_receiver');
                       },
-                      child: Text(
-                          'Select Receiver'
-                      ),
+                      child: Text('Select Receiver'),
                     ),
                   ],
                 ),
@@ -119,16 +114,13 @@ class _HomeState extends State<Home> {
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
                   child: RaisedButton(
                     onPressed: () {
-
-                        Navigator.pushNamed(context, '/r_body');
-
+                      Navigator.pushNamed(context, '/r_body');
                     },
                     child: Text('Next'),
                   ),
                 ),
               ],
             ),
-
           ],
         ),
       ),

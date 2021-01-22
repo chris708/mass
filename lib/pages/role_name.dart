@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mass/pages/classes_used.dart';
 import 'package:mass/db_keeper.dart';
+import 'package:mass/global_vars.dart';
 
 class RoleName extends StatefulWidget {
   @override
@@ -30,9 +31,9 @@ class MyFirstWidget extends StatefulWidget {
 }
 
 class _MyFirstWidgetState extends State<MyFirstWidget> {
-  RoleDetails role1 = new RoleDetails();
+  /*RoleDetails role1 = new RoleDetails();
   RoleDetails role2 = new RoleDetails();
-  RoleDetails role3 = new RoleDetails();
+  RoleDetails role3 = new RoleDetails();*/
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
