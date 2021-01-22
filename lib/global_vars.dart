@@ -8,3 +8,7 @@ RoleDetails role3 = new RoleDetails();
 ReceiverDetails receiver1 = new ReceiverDetails();
 ReceiverDetails receiver2 = new ReceiverDetails();
 ReceiverDetails receiver3 = new ReceiverDetails();
+
+RoleBody body1 = new RoleBody();
+RoleBody body2 = new RoleBody();
+RoleBody body3 = new RoleBody();

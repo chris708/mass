@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mass/pages/classes_used.dart';
+import 'package:mass/db_keeper.dart';
+import 'package:mass/global_vars.dart';
 
 class RoleBody extends StatefulWidget {
   @override
@@ -39,7 +42,7 @@ class _MyWidgetState extends State<MyWidget> {
             Container(
               margin: EdgeInsets.only(top: 10.0),
               child: Text(
-                "R_Name 1:",
+                role1.name,
                 style: TextStyle(
                   fontSize: 20.0,
                 ),
@@ -49,12 +52,14 @@ class _MyWidgetState extends State<MyWidget> {
               width: 200.0,
               child: TextFormField(
                 decoration: const InputDecoration(
-                  hintText: 'R_Name 1 definition',
+                  hintText: "Enter body",
                 ),
                 validator: (value) {
                   if (value.isEmpty) {
                     return 'Please enter some text';
                   }
+                  body1.id = '1';
+                  body1.textBody = value;
                   return null;
                 },
               ),
@@ -62,7 +67,7 @@ class _MyWidgetState extends State<MyWidget> {
             Container(
               margin: EdgeInsets.only(top: 10.0),
               child: Text(
-                "R_Name 2:",
+                role2.name,
                 style: TextStyle(
                   fontSize: 20.0,
                 ),
@@ -72,12 +77,14 @@ class _MyWidgetState extends State<MyWidget> {
               width: 200.0,
               child: TextFormField(
                 decoration: const InputDecoration(
-                  hintText: 'R_Name 2 definition',
+                  hintText: 'Enter body',
                 ),
                 validator: (value) {
                   if (value.isEmpty) {
                     return 'Please enter some text';
                   }
+                  body2.id = '2';
+                  body2.textBody = value;
                   return null;
                 },
               ),
@@ -85,7 +92,7 @@ class _MyWidgetState extends State<MyWidget> {
             Container(
               margin: EdgeInsets.only(top: 10.0),
               child: Text(
-                "R_Name 3:",
+                role3.name,
                 style: TextStyle(
                   fontSize: 20.0,
                 ),
@@ -95,12 +102,14 @@ class _MyWidgetState extends State<MyWidget> {
               width: 200.0,
               child: TextFormField(
                 decoration: const InputDecoration(
-                  hintText: 'R_Name 3 definition',
+                  hintText: 'Enter body',
                 ),
                 validator: (value) {
                   if (value.isEmpty) {
                     return 'Please enter some text';
                   }
+                  body3.id = '3';
+                  body3.textBody = value;
                   return null;
                 },
               ),

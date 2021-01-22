@@ -30,7 +30,7 @@ class _MyFifthWidgetState extends State<MyFifthWidget> {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        height: 150.0,
+        height: 155.0,
         width: 320.0,
         padding: EdgeInsets.only(top: 25.0),
         color: Colors.grey[300],

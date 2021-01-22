@@ -114,3 +114,24 @@ class ReceiverDetails {
     return 'ReceiverDetails{id: $id, name: $name, email: $email, phone: $phone}';
   }
 }
+
+class RoleBody {
+  String id;
+  String textBody;
+
+  RoleBody({this.id, this.textBody});
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'textBody': textBody,
+    };
+  }
+
+  // Implement toString to make it easier to see information about
+  // each dog when using the print statement.
+  @override
+  String toString() {
+    return 'RoleBody{id: $id, textBody: $textBody}';
+  }
+}
