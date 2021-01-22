@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mass/pages/classes_used.dart';
+import 'dart:async';
+import 'package:mass/db_keeper.dart';
+import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
 
 class SenderDetail extends StatefulWidget {
   @override
@@ -29,6 +34,7 @@ class MyThirdWidget extends StatefulWidget {
 
 class _MyThirdWidgetState extends State<MyThirdWidget> {
   final _formKey = GlobalKey<FormState>();
+  SenderDetails sender1 = new SenderDetails();
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -40,9 +46,11 @@ class _MyThirdWidgetState extends State<MyThirdWidget> {
           children: <Widget>[
             Container(
               margin: EdgeInsets.only(top: 10.0),
-              child: Text("Enter your name:", style: TextStyle(
-                fontSize: 20.0,
-              ),
+              child: Text(
+                "Enter your name:",
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
               ),
             ),
             Container(
@@ -55,15 +63,18 @@ class _MyThirdWidgetState extends State<MyThirdWidget> {
                   if (value.isEmpty) {
                     return 'Please enter some text';
                   }
+                  sender1.name = value;
                   return null;
                 },
               ),
             ),
             Container(
               margin: EdgeInsets.only(top: 10.0),
-              child: Text("Enter your email:", style: TextStyle(
-                fontSize: 20.0,
-              ),
+              child: Text(
+                "Enter your email:",
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
               ),
             ),
             Container(
@@ -76,15 +87,18 @@ class _MyThirdWidgetState extends State<MyThirdWidget> {
                   if (value.isEmpty) {
                     return 'Please enter some text';
                   }
+                  sender1.email = value;
                   return null;
                 },
               ),
             ),
             Container(
               margin: EdgeInsets.only(top: 10.0),
-              child: Text("Enter your contact no:", style: TextStyle(
-                fontSize: 20.0,
-              ),
+              child: Text(
+                "Enter your contact no:",
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
               ),
             ),
             Container(
@@ -97,6 +111,7 @@ class _MyThirdWidgetState extends State<MyThirdWidget> {
                   if (value.isEmpty) {
                     return 'Please enter some text';
                   }
+                  sender1.phone = value;
                   return null;
                 },
               ),
@@ -111,7 +126,13 @@ class _MyThirdWidgetState extends State<MyThirdWidget> {
                       // Validate will return true if the form is valid, or false if
                       // the form is invalid.
                       if (_formKey.currentState.validate()) {
-                        // Process data.
+                        //edit here
+
+                        print(sender1.name);
+                        print(sender1.email);
+                        print(sender1.phone);
+
+                        databaseInit();
                         Navigator.pushNamed(context, '/e_details');
                       }
                     },
@@ -126,4 +147,3 @@ class _MyThirdWidgetState extends State<MyThirdWidget> {
     );
   }
 }
-
