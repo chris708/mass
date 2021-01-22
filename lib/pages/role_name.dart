@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mass/pages/classes_used.dart';
+import 'package:mass/db_keeper.dart';
 
 class RoleName extends StatefulWidget {
   @override
@@ -20,6 +22,7 @@ class _RoleNameState extends State<RoleName> {
     );
   }
 }
+
 class MyFirstWidget extends StatefulWidget {
   @override
   MyFirstWidget({Key key}) : super(key: key);
@@ -27,6 +30,9 @@ class MyFirstWidget extends StatefulWidget {
 }
 
 class _MyFirstWidgetState extends State<MyFirstWidget> {
+  RoleDetails role1 = new RoleDetails();
+  RoleDetails role2 = new RoleDetails();
+  RoleDetails role3 = new RoleDetails();
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -39,9 +45,11 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
           children: <Widget>[
             Container(
               margin: EdgeInsets.only(top: 10.0),
-              child: Text("Role 1:", style: TextStyle(
-                fontSize: 20.0,
-              ),
+              child: Text(
+                "Role 1:",
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
               ),
             ),
             Container(
@@ -54,15 +62,25 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
                   if (value.isEmpty) {
                     return 'Please enter some text';
                   }
+                  role1.id = '1';
+                  role1.name = value;
+                  role1.receiver1Name = 'x';
+                  role1.receiver1Email = 'x';
+                  role1.receiver1Phone = 'x';
+                  role1.receiver2Name = 'x';
+                  role1.receiver2Email = 'x';
+                  role1.receiver2Phone = 'x';
                   return null;
                 },
               ),
             ),
             Container(
               margin: EdgeInsets.only(top: 10.0),
-              child: Text("Role 2:", style: TextStyle(
-                fontSize: 20.0,
-              ),
+              child: Text(
+                "Role 2:",
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
               ),
             ),
             Container(
@@ -75,15 +93,25 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
                   if (value.isEmpty) {
                     return 'Please enter some text';
                   }
+                  role2.id = '2';
+                  role2.name = value;
+                  role2.receiver1Name = 'x';
+                  role2.receiver1Email = 'x';
+                  role2.receiver1Phone = 'x';
+                  role2.receiver2Name = 'x';
+                  role2.receiver2Email = 'x';
+                  role2.receiver2Phone = 'x';
                   return null;
                 },
               ),
             ),
             Container(
               margin: EdgeInsets.only(top: 10.0),
-              child: Text("Role 3:", style: TextStyle(
-                fontSize: 20.0,
-              ),
+              child: Text(
+                "Role 3:",
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
               ),
             ),
             Container(
@@ -96,6 +124,14 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
                   if (value.isEmpty) {
                     return 'Please enter some text';
                   }
+                  role3.id = '3';
+                  role3.name = value;
+                  role3.receiver1Name = 'x';
+                  role3.receiver1Email = 'x';
+                  role3.receiver1Phone = 'x';
+                  role3.receiver2Name = 'x';
+                  role3.receiver2Email = 'x';
+                  role3.receiver2Phone = 'x';
                   return null;
                 },
               ),
@@ -112,6 +148,12 @@ class _MyFirstWidgetState extends State<MyFirstWidget> {
 
                       if (_formKey.currentState.validate()) {
                         // Process data.
+                        print(role1.receiver2Name);
+                        createRoleTable();
+                        insertRole(role1);
+                        insertRole(role2);
+                        insertRole(role3);
+                        ViewRoles();
                         Navigator.pushNamed(context, '/a_roles');
                       }
                     },

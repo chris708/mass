@@ -153,3 +153,78 @@ Future<List<EventDetails>> ViewEvent() async {
     );
   });
 }
+
+void createRoleTable() async {
+  // Avoid errors caused by flutter upgrade.
+  // Importing 'package:flutter/widgets.dart' is required.
+  WidgetsFlutterBinding.ensureInitialized();
+  // Open the database and store the reference.
+  final Future<Database> database = openDatabase(
+    // Set the path to the database. Note: Using the `join` function from the
+    // `path` package is best practice to ensure the path is correctly
+    // constructed for each platform.
+    join(await getDatabasesPath(), 'massmailer3_database.db'),
+    // When the database is first created, create a table to store dogs.
+    onUpgrade: (db, oldVersion, newVersion) {
+      db.execute(
+        "CREATE TABLE roles(id TEXT PRIMARY KEY, name TEXT, receiver1Name TEXT, receiver1Email TEXT, receiver1Phone TEXT, receiver2Name TEXT, receiver2Email TEXT, receiver2Phone TEXT)",
+      );
+    },
+    version: 1,
+  );
+
+  print("database created and role table created successfully");
+}
+
+Future<void> insertRole(RoleDetails role) async {
+  // Get a reference to the database.
+  WidgetsFlutterBinding.ensureInitialized();
+  // Open the database and store the reference.
+  final Future<Database> database = openDatabase(
+      // Set the path to the database. Note: Using the `join` function from the
+      // `path` package is best practice to ensure the path is correctly
+      // constructed for each platform.
+      join(await getDatabasesPath(), 'massmailer3_database.db'));
+  final Database db = await database;
+
+  // Insert the Dog into the correct table. You might also specify the
+  // `conflictAlgorithm` to use in case the same dog is inserted twice.
+  //
+  // In this case, replace any previous data.
+  await db.insert(
+    'roles',
+    role.toMap(),
+    conflictAlgorithm: ConflictAlgorithm.replace,
+  );
+  print("Roles added");
+  print(await ViewRoles());
+}
+
+Future<List<RoleDetails>> ViewRoles() async {
+  // Get a reference to the database.
+  WidgetsFlutterBinding.ensureInitialized();
+  // Open the database and store the reference.
+  final Future<Database> database = openDatabase(
+      // Set the path to the database. Note: Using the `join` function from the
+      // `path` package is best practice to ensure the path is correctly
+      // constructed for each platform.
+      join(await getDatabasesPath(), 'massmailer3_database.db'));
+  final Database db = await database;
+
+  // Query the table for all The Dogs.
+  final List<Map<String, dynamic>> maps = await db.query('roles');
+
+  // Convert the List<Map<String, dynamic> into a List<Dog>.
+  return List.generate(maps.length, (i) {
+    return RoleDetails(
+      id: maps[i]['id'],
+      name: maps[i]['name'],
+      receiver1Name: maps[i]['receiver1Name'],
+      receiver1Email: maps[i]['receiver1Email'],
+      receiver1Phone: maps[i]['receiver1Phone'],
+      receiver2Name: maps[i]['receiver2Name'],
+      receiver2Email: maps[i]['receiver2Email'],
+      receiver2Phone: maps[i]['receiver2Phone'],
+    );
+  });
+}
