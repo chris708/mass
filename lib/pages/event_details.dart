@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mass/pages/classes_used.dart';
 
 class EventDetail extends StatefulWidget {
   @override
@@ -40,9 +41,11 @@ class _MySecondWidgetState extends State<MySecondWidget> {
           children: <Widget>[
             Container(
               margin: EdgeInsets.only(top: 10.0),
-              child: Text("Event name:", style: TextStyle(
-                fontSize: 20.0,
-              ),
+              child: Text(
+                "Event name:",
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
               ),
             ),
             Container(
@@ -61,9 +64,11 @@ class _MySecondWidgetState extends State<MySecondWidget> {
             ),
             Container(
               margin: EdgeInsets.only(top: 10.0),
-              child: Text("Event date:", style: TextStyle(
-                fontSize: 20.0,
-              ),
+              child: Text(
+                "Event date:",
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
               ),
             ),
             Container(
@@ -82,9 +87,11 @@ class _MySecondWidgetState extends State<MySecondWidget> {
             ),
             Container(
               margin: EdgeInsets.only(top: 10.0),
-              child: Text("Event venue:", style: TextStyle(
-                fontSize: 20.0,
-              ),
+              child: Text(
+                "Event venue:",
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
               ),
             ),
             Container(
@@ -103,9 +110,11 @@ class _MySecondWidgetState extends State<MySecondWidget> {
             ),
             Container(
               margin: EdgeInsets.only(top: 10.0),
-              child: Text("Number of roles:", style: TextStyle(
-                fontSize: 20.0,
-              ),
+              child: Text(
+                "Number of roles:",
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
               ),
             ),
             Container(
