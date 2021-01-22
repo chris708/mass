@@ -91,14 +91,16 @@ class RoleDetails {
 }
 
 class ReceiverDetails {
+  String id;
   String name;
   String email;
   String phone;
 
-  ReceiverDetails({this.name, this.email, this.phone});
+  ReceiverDetails({this.id, this.name, this.email, this.phone});
 
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'name': name,
       'email': email,
       'phone': phone,
@@ -109,6 +111,6 @@ class ReceiverDetails {
   // each dog when using the print statement.
   @override
   String toString() {
-    return 'SenderDetails{name: $name, email: $email, phone: $phone}';
+    return 'ReceiverDetails{id: $id, name: $name, email: $email, phone: $phone}';
   }
 }

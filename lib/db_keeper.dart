@@ -228,3 +228,74 @@ Future<List<RoleDetails>> ViewRoles() async {
     );
   });
 }
+
+void createReceiverTable() async {
+  // Avoid errors caused by flutter upgrade.
+  // Importing 'package:flutter/widgets.dart' is required.
+  WidgetsFlutterBinding.ensureInitialized();
+  // Open the database and store the reference.
+  final Future<Database> database = openDatabase(
+    // Set the path to the database. Note: Using the `join` function from the
+    // `path` package is best practice to ensure the path is correctly
+    // constructed for each platform.
+    join(await getDatabasesPath(), 'massmailer4_database.db'),
+    // When the database is first created, create a table to store dogs.
+    onUpgrade: (db, oldVersion, newVersion) {
+      db.execute(
+        "CREATE TABLE receiver(id TEXT PRIMARY KEY, name TEXT, email TEXT, phone TEXT)",
+      );
+    },
+    version: 1,
+  );
+
+  print("database created and receiver table created successfully");
+}
+
+Future<void> insertReceiver(ReceiverDetails role) async {
+  // Get a reference to the database.
+  WidgetsFlutterBinding.ensureInitialized();
+  // Open the database and store the reference.
+  final Future<Database> database = openDatabase(
+      // Set the path to the database. Note: Using the `join` function from the
+      // `path` package is best practice to ensure the path is correctly
+      // constructed for each platform.
+      join(await getDatabasesPath(), 'massmailer4_database.db'));
+  final Database db = await database;
+
+  // Insert the Dog into the correct table. You might also specify the
+  // `conflictAlgorithm` to use in case the same dog is inserted twice.
+  //
+  // In this case, replace any previous data.
+  await db.insert(
+    'receiver',
+    role.toMap(),
+    conflictAlgorithm: ConflictAlgorithm.replace,
+  );
+  print("Receiver added");
+  print(await ViewReceiver());
+}
+
+Future<List<ReceiverDetails>> ViewReceiver() async {
+  // Get a reference to the database.
+  WidgetsFlutterBinding.ensureInitialized();
+  // Open the database and store the reference.
+  final Future<Database> database = openDatabase(
+      // Set the path to the database. Note: Using the `join` function from the
+      // `path` package is best practice to ensure the path is correctly
+      // constructed for each platform.
+      join(await getDatabasesPath(), 'massmailer4_database.db'));
+  final Database db = await database;
+
+  // Query the table for all The Dogs.
+  final List<Map<String, dynamic>> maps = await db.query('receiver');
+
+  // Convert the List<Map<String, dynamic> into a List<Dog>.
+  return List.generate(maps.length, (i) {
+    return ReceiverDetails(
+      id: maps[i]['id'],
+      name: maps[i]['name'],
+      email: maps[i]['email'],
+      phone: maps[i]['phone'],
+    );
+  });
+}

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mass/pages/classes_used.dart';
+import 'package:mass/db_keeper.dart';
+import 'package:mass/global_vars.dart';
 
 class ChooseLocation extends StatefulWidget {
   @override
@@ -18,6 +21,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
     );
   }
 }
+
 class MyStatefulWidget extends StatefulWidget {
   MyStatefulWidget({Key key}) : super(key: key);
 
@@ -39,9 +43,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           children: <Widget>[
             Container(
               margin: EdgeInsets.only(top: 10.0),
-              child: Text("Enter receivers name:", style: TextStyle(
-                fontSize: 20.0,
-              ),
+              child: Text(
+                "Enter receivers name:",
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
               ),
             ),
             Container(
@@ -54,15 +60,18 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   if (value.isEmpty) {
                     return 'Please enter some text';
                   }
+                  receiver1.name = value;
                   return null;
                 },
               ),
             ),
             Container(
               margin: EdgeInsets.only(top: 10.0),
-              child: Text("Enter receivers email:", style: TextStyle(
-                fontSize: 20.0,
-              ),
+              child: Text(
+                "Enter receivers email:",
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
               ),
             ),
             Container(
@@ -75,15 +84,18 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   if (value.isEmpty) {
                     return 'Please enter some text';
                   }
+                  receiver1.email = value;
                   return null;
                 },
               ),
             ),
             Container(
               margin: EdgeInsets.only(top: 10.0),
-              child: Text("Enter receivers contact no:", style: TextStyle(
-                fontSize: 20.0,
-              ),
+              child: Text(
+                "Enter receivers contact no:",
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
               ),
             ),
             Container(
@@ -96,6 +108,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   if (value.isEmpty) {
                     return 'Please enter some text';
                   }
+                  receiver1.phone = value;
                   return null;
                 },
               ),
@@ -112,6 +125,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
                       if (_formKey.currentState.validate()) {
                         // Process data.
+                        createReceiverTable();
+                        insertReceiver(receiver1);
+                        ViewReceiver();
                         Navigator.pushNamed(context, '/a_roles');
                       }
                     },
