@@ -12,9 +12,7 @@ class _RoleBodyState extends State<RoleBody> {
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
         backgroundColor: Colors.amber,
-        title: Text(
-          'Role Body'
-        ),
+        title: Text('Role Body'),
       ),
       body: MyWidget(),
     );
@@ -40,9 +38,11 @@ class _MyWidgetState extends State<MyWidget> {
           children: <Widget>[
             Container(
               margin: EdgeInsets.only(top: 10.0),
-              child: Text("R_Name 1:", style: TextStyle(
-                fontSize: 20.0,
-              ),
+              child: Text(
+                "R_Name 1:",
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
               ),
             ),
             Container(
@@ -61,9 +61,11 @@ class _MyWidgetState extends State<MyWidget> {
             ),
             Container(
               margin: EdgeInsets.only(top: 10.0),
-              child: Text("R_Name 2:", style: TextStyle(
-                fontSize: 20.0,
-              ),
+              child: Text(
+                "R_Name 2:",
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
               ),
             ),
             Container(
@@ -82,9 +84,11 @@ class _MyWidgetState extends State<MyWidget> {
             ),
             Container(
               margin: EdgeInsets.only(top: 10.0),
-              child: Text("R_Name 3:", style: TextStyle(
-                fontSize: 20.0,
-              ),
+              child: Text(
+                "R_Name 3:",
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
               ),
             ),
             Container(
@@ -108,6 +112,7 @@ class _MyWidgetState extends State<MyWidget> {
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
                   child: RaisedButton(
                     onPressed: () {
+                      Navigator.pushNamed(context, '/send_email');
                       // Validate will return true if the form is valid, or false if
                       // the form is invalid.
 

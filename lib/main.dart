@@ -7,10 +7,10 @@ import 'package:mass/pages/role_body.dart';
 import 'package:mass/pages/role_name.dart';
 import 'package:mass/pages/event_details.dart';
 import 'package:mass/pages/sender_details.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:mass/pages/classes_used.dart';
+import 'package:mass/pages/send_email.dart';
+import 'package:mass/pages/final_page.dart';
 
-void main() async => runApp(MaterialApp(initialRoute: '/home', routes: {
+void main() => runApp(MaterialApp(initialRoute: '/home', routes: {
       '/home': (context) => HomePage(),
       '/s_details': (context) => SenderDetail(),
       '/e_details': (context) => EventDetail(),
@@ -19,4 +19,6 @@ void main() async => runApp(MaterialApp(initialRoute: '/home', routes: {
       '/create_receiver': (context) => ChooseLocation(),
       '/select_receiver': (context) => SelectReceiver(),
       '/r_body': (context) => RoleBody(),
+      '/send_email': (context) => SendEmail(),
+      '/final': (context) => FinalPage(),
     }));

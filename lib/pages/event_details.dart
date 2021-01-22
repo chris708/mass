@@ -31,6 +31,7 @@ class MySecondWidget extends StatefulWidget {
 
 class _MySecondWidgetState extends State<MySecondWidget> {
   final _formKey = GlobalKey<FormState>();
+  EventDetails event1 = new EventDetails();
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -59,6 +60,7 @@ class _MySecondWidgetState extends State<MySecondWidget> {
                   if (value.isEmpty) {
                     return 'Please enter some text';
                   }
+                  event1.name = value;
                   return null;
                 },
               ),
@@ -82,6 +84,7 @@ class _MySecondWidgetState extends State<MySecondWidget> {
                   if (value.isEmpty) {
                     return 'Please enter some text';
                   }
+                  event1.date = value;
                   return null;
                 },
               ),
@@ -105,6 +108,7 @@ class _MySecondWidgetState extends State<MySecondWidget> {
                   if (value.isEmpty) {
                     return 'Please enter some text';
                   }
+                  event1.venue = value;
                   return null;
                 },
               ),
@@ -128,6 +132,7 @@ class _MySecondWidgetState extends State<MySecondWidget> {
                   if (value.isEmpty) {
                     return 'Please enter some text';
                   }
+                  event1.roles = value;
                   return null;
                 },
               ),
@@ -143,6 +148,10 @@ class _MySecondWidgetState extends State<MySecondWidget> {
                       // the form is invalid.
                       if (_formKey.currentState.validate()) {
                         // Process data.
+                        print(event1.name);
+                        print(event1.venue);
+                        createEventTable();
+                        insertEvent(event1);
                         Navigator.pushNamed(context, '/r_name');
                       }
                     },
