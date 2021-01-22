@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/widgets.dart';
-
+import 'package:mass/pages/classes_used.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -11,15 +11,65 @@ void databaseInit() async {
   WidgetsFlutterBinding.ensureInitialized();
   // Open the database and store the reference.
   final Future<Database> database = openDatabase(
+    // Set the path to the database. Note: Using the `join` function from the
+    // `path` package is best practice to ensure the path is correctly
+    // constructed for each platform.
+    join(await getDatabasesPath(), 'massmailer_database.db'),
+    // When the database is first created, create a table to store dogs.
+    onCreate: (db, version) {
+      return db.execute(
+        "CREATE TABLE sender(email TEXT PRIMARY KEY, name TEXT, phone TEXT)",
+      );
+    },
+    version: 1,
+  );
+  print("database created and sender table created successfully");
+}
+
+Future<void> insertSender(SenderDetails sender) async {
+  // Get a reference to the database.
+  WidgetsFlutterBinding.ensureInitialized();
+  // Open the database and store the reference.
+  final Future<Database> database = openDatabase(
       // Set the path to the database. Note: Using the `join` function from the
       // `path` package is best practice to ensure the path is correctly
       // constructed for each platform.
-      join(await getDatabasesPath(), 'massmailer_database.db'),
-      // When the database is first created, create a table to store dogs.
-      onCreate: (db, version) {
-    return db.execute(
-      "CREATE TABLE sender(email TEXT PRIMARY KEY, name TEXT, phone TEXT)",
+      join(await getDatabasesPath(), 'massmailer_database.db'));
+  final Database db = await database;
+
+  // Insert the Dog into the correct table. You might also specify the
+  // `conflictAlgorithm` to use in case the same dog is inserted twice.
+  //
+  // In this case, replace any previous data.
+  await db.insert(
+    'sender',
+    sender.toMap(),
+    conflictAlgorithm: ConflictAlgorithm.replace,
+  );
+  print("Sender added");
+  print(await ViewSender());
+}
+
+Future<List<SenderDetails>> ViewSender() async {
+  // Get a reference to the database.
+  WidgetsFlutterBinding.ensureInitialized();
+  // Open the database and store the reference.
+  final Future<Database> database = openDatabase(
+      // Set the path to the database. Note: Using the `join` function from the
+      // `path` package is best practice to ensure the path is correctly
+      // constructed for each platform.
+      join(await getDatabasesPath(), 'massmailer_database.db'));
+  final Database db = await database;
+
+  // Query the table for all The Dogs.
+  final List<Map<String, dynamic>> maps = await db.query('sender');
+
+  // Convert the List<Map<String, dynamic> into a List<Dog>.
+  return List.generate(maps.length, (i) {
+    return SenderDetails(
+      name: maps[i]['name'],
+      email: maps[i]['email'],
+      phone: maps[i]['phone'],
     );
   });
-  print("database created and sender table created successfully");
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mass/pages/classes_used.dart';
+import 'package:mass/db_keeper.dart';
 
 class EventDetail extends StatefulWidget {
   @override

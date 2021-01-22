@@ -133,6 +133,8 @@ class _MyThirdWidgetState extends State<MyThirdWidget> {
                         print(sender1.phone);
 
                         databaseInit();
+                        insertSender(sender1);
+
                         Navigator.pushNamed(context, '/e_details');
                       }
                     },
