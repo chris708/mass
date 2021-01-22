@@ -9,6 +9,7 @@ import 'package:mass/pages/role_body.dart';
 import 'package:mass/pages/role_name.dart';
 import 'package:mass/pages/event_details.dart';
 import 'package:mass/pages/sender_details.dart';
+import 'package:mass/pages/email_sender.dart';
 import 'package:mass/pages/send_email.dart';
 import 'package:mass/pages/final_page.dart';
 
@@ -23,6 +24,7 @@ void main() => runApp(MaterialApp(initialRoute: '/home', routes: {
       '/create_receiver3': (context) => ChooseLocation3(),
       '/select_receiver': (context) => SelectReceiver(),
       '/r_body': (context) => RoleBody(),
+      '/sender': (context) => EmailSender(),
       '/send_email': (context) => SendEmail(),
       '/final': (context) => FinalPage(),
     }));

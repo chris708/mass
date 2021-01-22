@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mass/pages/classes_used.dart';
 import 'package:mass/db_keeper.dart';
+import 'package:mass/global_vars.dart';
 
 class EventDetail extends StatefulWidget {
   @override
@@ -31,7 +32,7 @@ class MySecondWidget extends StatefulWidget {
 
 class _MySecondWidgetState extends State<MySecondWidget> {
   final _formKey = GlobalKey<FormState>();
-  EventDetails event1 = new EventDetails();
+
   @override
   Widget build(BuildContext context) {
     return Form(
