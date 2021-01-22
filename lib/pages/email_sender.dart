@@ -16,10 +16,8 @@ class _EmailSenderState extends State<EmailSender> {
   List<String> attachment = <String>[];
   final TextEditingController _subjectController =
       TextEditingController(text: event1.name);
-  final TextEditingController _bodyController = TextEditingController(
-      text: '''  <em>the body has <code>HTML</code></em> <br><br><br>
-  <strong>Some Apps like Gmail might ignore it</strong>
-  ''');
+  final TextEditingController _bodyController =
+      TextEditingController(text: body1.textBody);
   final GlobalKey<ScaffoldState> _scafoldKey = GlobalKey<ScaffoldState>();
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> send() async {
@@ -37,10 +35,10 @@ class _EmailSenderState extends State<EmailSender> {
     final MailOptions mailOptions = MailOptions(
       body: _bodyController.text,
       subject: _subjectController.text,
-      recipients: <String>['example@example.com'],
+      recipients: <String>[receiver1.email, receiver2.email, receiver3.email],
       isHTML: true,
       // bccRecipients: ['other@example.com'],
-      ccRecipients: <String>['third@example.com'],
+      //ccRecipients: <String>['third@example.com'],
       attachments: attachment,
     );
 
@@ -179,11 +177,11 @@ class _EmailSenderState extends State<EmailSender> {
     );
 
     return MaterialApp(
-      theme: ThemeData(primaryColor: Colors.red),
+      theme: ThemeData(primaryColor: Colors.teal),
       home: Scaffold(
         key: _scafoldKey,
         appBar: AppBar(
-          title: const Text('Flutter Mailer Example'),
+          title: const Text('Email Sender'),
           actions: <Widget>[
             IconButton(
               onPressed: send,
@@ -317,6 +315,7 @@ class _EmailSenderState extends State<EmailSender> {
                         TempFile(content: content, name: fileName);
                     // Map.from({'content': content, 'fileName': fileName});
                     Navigator.of(context).pop<TempFile>(tempFile);
+                    //Navigator.pushNamed(context, '/final');
                   },
                 ),
               ],
